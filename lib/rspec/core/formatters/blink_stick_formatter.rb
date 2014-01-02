@@ -13,7 +13,7 @@ module RSpec
           blinkstick.off
         end
 
-        def eaxmple_failed(example)
+        def example_failed(example)
           blinkstick.color = Color::RGB::Red
           super(example)
           blinkstick.off
