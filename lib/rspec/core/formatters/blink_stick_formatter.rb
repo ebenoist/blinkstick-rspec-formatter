@@ -28,17 +28,20 @@ module RSpec
           else
             blinkstick.color = Color::RGB::Green
           end
+
           super(duration, example_count, failure_count, pending_count)
 
-          sleep 5
-          blinkstick.off
-
-          rand(10).times do
-            blinkstick.color = Color::RGB::Green
+          Thread.new do
+            sleep 5
             blinkstick.off
+
+            20.times do
+              blinkstick.color = Color::RGB::Green
+              sleep 0.01
+              blinkstick.off
+            end
           end
         end
-
 
       end
     end
