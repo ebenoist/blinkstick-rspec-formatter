@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = "blinkstick-rspec-formatter"
-  s.version     =  "0.0.1"
+  s.version     =  "0.0.2"
   s.date        = "2014-01-02"
   s.summary     = "BlinkStick Rspec Formatter"
   s.description = <<-DESC

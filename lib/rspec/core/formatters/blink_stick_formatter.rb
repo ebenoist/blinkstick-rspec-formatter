@@ -6,7 +6,6 @@ module RSpec
     module Formatters
 
       class BlinkStickFormatter < ProgressFormatter
-
         def example_passed(example)
           blinkstick.color = Color::RGB::Green
           super(example)
@@ -22,6 +21,24 @@ module RSpec
         def blinkstick
           @blinkstick ||= BlinkStick.find_all.first
         end
+
+        def dump_summary(duration, example_count, failure_count, pending_count)
+          if (failure_count > 0)
+            blinkstick.color = Color::RGB::Red
+          else
+            blinkstick.color = Color::RGB::Green
+          end
+          super(duration, example_count, failure_count, pending_count)
+
+          sleep 5
+          blinkstick.off
+
+          rand(10).times do
+            blinkstick.color = Color::RGB::Green
+            blinkstick.off
+          end
+        end
+
 
       end
     end
